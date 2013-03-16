@@ -12,7 +12,7 @@
 
   You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
 
-  To declare a taxonomy, simply add a taxonomy array to the $custom_taxonomies array variable, with required values of:
+  To declare a taxonomy, simply add a taxonomy array to the $lt3_custom_taxonomies array variable, with required values of:
   array(
     'slug_singuar'         => '',
     'slug_plural'           => '',
@@ -37,7 +37,7 @@
   Declare Taxonomies
 
 ------------------------------------------------ */
-$custom_taxonomies = array();
+$lt3_custom_taxonomies = array();
 
 /*
 
@@ -47,8 +47,8 @@ $custom_taxonomies = array();
 add_action('init', 'lt3_register_taxonomies', 0);
 function lt3_register_taxonomies()
 {
-  global $custom_taxonomies;
-  foreach($custom_taxonomies as $ct)
+  global $lt3_custom_taxonomies;
+  foreach($lt3_custom_taxonomies as $ct)
   {
     $labels = array(
       'name'                  => __($ct['name_plural'], $ct['name_plural'] . ' general name'),
