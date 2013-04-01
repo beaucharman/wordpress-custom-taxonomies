@@ -4,9 +4,12 @@
   lt3-theme Custom Taxonomies
 
 ------------------------------------------------
-  custom-taxonomies.php 2.0
-  Thursday, 14th March 2013
-  Beau Charman | @beaucharman | http://beaucharman.me
+  custom-taxonomies.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
   For more information about registering Taxonomies:
   http://codex.wordpress.org/Function_Reference/register_taxonomy
@@ -15,7 +18,7 @@
 
   To declare a taxonomy, simply add a taxonomy array to the $lt3_custom_taxonomies array variable, with required values of:
   array(
-    'slug_singuar'         => '',
+    'slug_singuar'          => '',
     'slug_plural'           => '',
     'name_singular'         => '',
     'name_plural'           => '',
@@ -28,6 +31,7 @@
     'update_count_callback' => NULL,
     'query_var'             => true,
     'rewrite'               => '',
+    'capabilities'          => array(),
     'sort'                  => NULL,
     'post_type'             => array('')
   )
@@ -64,19 +68,19 @@ function lt3_register_taxonomies()
       'new_item_name'         => __('New ' . $ct['name_singular']),
       'menu_name'             => __($ct['name_plural'])
     );
-    register_taxonomy($ct['slug_plural'], $ct['post_type'], array(
+    register_taxonomy($ct['slug_singular'], $ct['post_type'], array(
       'labels'                => $labels,
-      'public'                => ($ct['public']) ? $ct['public'] : true,
-      'show_in_nav_menus'     => ($ct['show_in_nav_menus']) ? $ct['show_in_nav_menus'] : true,
-      'show_ui'               => ($ct['show_ui']) ? $ct['show_ui'] : true,
-      'show_tagcloud'         => ($ct['show_tagcloud']) ? $ct['show_tagcloud'] : true,
-      'show_admin_column'     => ($ct['show_admin_column']) ? $ct['show_admin_column'] : false,
-      'hierarchical'          => ($ct['hierarchical'])  ? $ct['hierarchical'] : false,
+      'public'                => ($ct['public'])                ? $ct['public'] : true,
+      'show_in_nav_menus'     => ($ct['show_in_nav_menus'])     ? $ct['show_in_nav_menus'] : true,
+      'show_ui'               => ($ct['show_ui'])               ? $ct['show_ui'] : true,
+      'show_tagcloud'         => ($ct['show_tagcloud'])         ? $ct['show_tagcloud'] : true,
+      'show_admin_column'     => ($ct['show_admin_column'])     ? $ct['show_admin_column'] : false,
+      'hierarchical'          => ($ct['hierarchical'])          ? $ct['hierarchical'] : false,
       'update_count_callback' => ($ct['update_count_callback']) ? $ct['update_count_callback'] : null,
-      'query_var'             => ($ct['query_var']) ? $ct['query_var'] : $ct['slug_plural'],
-      'rewrite'               => ($ct['rewrite']) ? $ct['rewrite'] : true,
-      'capabilities'          => ($ct['capabilities']) ? $ct['capabilities'] : '',
-      'sort'                  => ($ct['sort']) ? $ct['sort'] : null
+      'query_var'             => ($ct['query_var'])             ? $ct['query_var'] : $ct['slug_plural'],
+      'rewrite'               => ($ct['rewrite'])               ? $ct['rewrite'] : true,
+      'capabilities'          => ($ct['capabilities'])          ? $ct['capabilities'] : array(),
+      'sort'                  => ($ct['sort'])                  ? $ct['sort'] : null
     ));
   }
 }
