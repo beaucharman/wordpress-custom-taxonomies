@@ -13,22 +13,20 @@ Include `taxonomies.php` in your `functions.php` file.
 Declare the various argument arrays to setup the new taxonomy as needed (`$name` is required):
 
 ```php
-// Required
+// required
 $name = '';
 
-// Optional
 // The post type/s that the taxonomy is connected to.
 // String or array
 $post_type = '';
 
-// Optional
+// optional
 $labels = array(
   'label_singular'        => '',
   'label_plural'          => '',
   'menu_label'            => ''
  );
 
-// Optional
 $options = array(
   'public'                => true,
   'show_ui'               => true,
@@ -42,7 +40,6 @@ $options = array(
   'sort'                  => null
  );
 
-// Optional
 $help = '';
 ```
 
@@ -64,7 +61,7 @@ The taxonomy slug.
 
 $Taxonomy->lables
 
-A an array of the singular, plural and menu lables.
+An array of the singular, plural and menu lables.
 
 #### Methods
 

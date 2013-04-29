@@ -1,10 +1,9 @@
 <?php
 /**
- * Taxonomies
+ * Custom Taxonomies
  * ------------------------------------------------------------------------
- * taxonomies.php
+ * custom-taxonomies.php
  * @version 2.0 | April 1st 2013
- * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/WordPress-Custom-Taxonomies
  * @license MIT license
