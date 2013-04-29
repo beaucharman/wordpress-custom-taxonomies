@@ -17,11 +17,14 @@
  *  $Taxonomy->get()
  *  $Taxonomy->archive_link()
  *
- * For more information about registering Taxonomies:
- * http://codex.wordpress.org/Function_Reference/register_taxonomy
- *
  * To declare a custom taxonomy, simply create a new instance of the
  * LT3_Custom_Taxonomy class.
+ *
+ * Configuration:
+ * https://github.com/beaucharman/WordPress-Custom-Taxonomies
+ *
+ * For more information about registering Taxonomies:
+ * http://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
 /* ------------------------------------------------------------------------
