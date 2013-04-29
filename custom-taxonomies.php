@@ -86,13 +86,14 @@ class LT3_Custom_Taxonomy
     /* Configure the options */
     $options = array_merge(
       array(
-        'labels'                => $labels,
-        'hierarchical'          => true,
-        'query_var'             => $this->name,
-        'rewrite'               => true
-       ),
+        'labels'            => $labels,
+        'hierarchical'      => true,
+        'query_var'         => $this->name,
+        'rewrite'           => true,
+        'show_admin_column' => true
+      ),
       $this->options
-     );
+    );
 
     /* Register the new taxonomy */
     register_taxonomy( $this->name, $this->post_type, $options );
