@@ -71,19 +71,19 @@ class LT3_Custom_Taxonomy
       ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
     $labels = array(
-      'name'                  => __( $this->labels['label_plural'], $this->labels['label_plural'] . ' general name' ),
-      'singular_name'         => __( $this->labels['label_singular'], $this->labels['label_singular'] . ' singular name' ),
-      'menu_name'             => __( $this->labels['menu_label'] ),
-      'search_items'          => __( 'Search ' . $this->labels['label_plural'] ),
-      'all_items'             => __( 'All ' . $this->labels['label_plural'] ),
-      'parent_item'           => __( 'Parent ' . $this->labels['label_singular'] ),
-      'parent_item_colon'     => __( 'Parent '. $this->labels['label_singular'] . ':' ),
-      'edit_item'             => __( 'Edit ' . $this->labels['label_singular'] ),
-      'update_item'           => __( 'Update ' . $this->labels['label_singular'] ),
-      'add_new_item'          => __( 'Add New ' . $this->labels['label_singular'] ),
-      'new_item_name'         => __( 'New ' . $this->labels['label_singular'] ),
+      'name'              => __( $this->labels['label_plural'], $this->labels['label_plural'] . ' general name' ),
+      'singular_name'     => __( $this->labels['label_singular'], $this->labels['label_singular'] . ' singular name' ),
+      'menu_name'         => __( $this->labels['menu_label'] ),
+      'search_items'      => __( 'Search ' . $this->labels['label_plural'] ),
+      'all_items'         => __( 'All ' . $this->labels['label_plural'] ),
+      'parent_item'       => __( 'Parent ' . $this->labels['label_singular'] ),
+      'parent_item_colon' => __( 'Parent '. $this->labels['label_singular'] . ':' ),
+      'edit_item'         => __( 'Edit ' . $this->labels['label_singular'] ),
+      'update_item'       => __( 'Update ' . $this->labels['label_singular'] ),
+      'add_new_item'      => __( 'Add New ' . $this->labels['label_singular'] ),
+      'new_item_name'     => __( 'New ' . $this->labels['label_singular'] ),
 
-     );
+    );
 
     /* Configure the options */
     $options = array_merge(
