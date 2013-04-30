@@ -19,7 +19,7 @@
  * To declare a custom taxonomy, simply create a new instance of the
  * LT3_Custom_Taxonomy class.
  *
- * Configuration Guide:
+ * Configuration guide:
  * https://github.com/beaucharman/WordPress-Custom-Taxonomies
  *
  * For more information about registering Taxonomies:
