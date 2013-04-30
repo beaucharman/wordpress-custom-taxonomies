@@ -149,7 +149,7 @@ class LT3_Custom_Taxonomy
    * ------------------------------------------------------------------------ */
   public function archive_link()
   {
-    return home_url('/'.$this->name);
+    return home_url( '/' . $this->name );
   }
 
   /**
