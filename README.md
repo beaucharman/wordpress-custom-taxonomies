@@ -71,7 +71,7 @@ Gets the absolute permalink to the taxonomies's archive page.
 
 `$Taxonomy->get()`
 
-Get all the terms assigned to this taxonomy. Accepts an array of arguments, and a boolean value to retrieve just a single value (true, useful to use along side 'include' => array( $single_id ) ) or an array of results (false).
+Get all the terms assigned to this taxonomy. Accepts an array of arguments, and a boolean value to retrieve just a single value (true, useful to use along side `'include' => array( $single_id )` ) or an array of results (false).
 
 For example:
 
