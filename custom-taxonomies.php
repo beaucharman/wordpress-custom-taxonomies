@@ -127,9 +127,9 @@ class LT3_Custom_Taxonomy
   {
     $args = array_merge(
       array(
-        'orderby'       => 'name',
-        'order'         => 'ASC',
-        'hide_empty'    => false
+        'orderby'    => 'name',
+        'order'      => 'ASC',
+        'hide_empty' => false
       ), $user_args
     );
     if ( $single )
