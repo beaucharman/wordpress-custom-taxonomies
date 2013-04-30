@@ -5,7 +5,7 @@
  * custom-taxonomies.php
  * @version 2.0 | April 1st 2013
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/WordPress-Custom-Taxonomies
+ * @link    https://github.com/beaucharman/wordpress-custom-taxonomies
  * @license MIT license
  *
  * Properties
@@ -20,7 +20,7 @@
  * LT3_Custom_Taxonomy class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/WordPress-Custom-Taxonomies
+ * https://github.com/beaucharman/wordpress-custom-taxonomies
  *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
