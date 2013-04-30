@@ -9,7 +9,7 @@
  * @license MIT license
  *
  * Properties
- *  $Taxonomy->name | sring
+ *  $Taxonomy->name   | string
  *  $Taxonomy->lables | array
  *
  * Methods
