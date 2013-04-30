@@ -4,7 +4,7 @@ A PHP class to help register and maintain WordPress custom taxonomies. It also c
 
 For more information about registering taxonomies, including a full list of options, visit the [WordPress Codex](http://codex.wordpress.org/Function_Reference/register_taxonomy).
 
-This class works well with the [WordPress Custom Post Types class](https://github.com/beaucharman/WordPress-Custom-Post-Types).
+This class works well with the [WordPress Custom Post Types class](https://github.com/beaucharman/wordpress-custom-post-types).
 
 ### Declaring New Taxonomies
 
