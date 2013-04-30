@@ -55,21 +55,21 @@ The custom taxonomy class creates a handfull of useful properties and methods th
 
 #### Properties
 
-`$Taxonomy->name`
+**`$Taxonomy->name`**
 
 The taxonomy slug.
 
-`$Taxonomy->lables`
+**`$Taxonomy->lables`**
 
 An array of the singular, plural and menu lables.
 
 #### Methods
 
-`$Taxonomy->archive_link()`
+**`$Taxonomy->archive_link()`**
 
 Gets the absolute permalink to the taxonomies's archive page.
 
-`$Taxonomy->get()`
+**`$Taxonomy->get()`**
 
 Get all the terms assigned to this taxonomy. Accepts an array of arguments, and a boolean value to retrieve just a single value (true, useful to use along side `'include' => array( $single_id )` ) or an array of results (false).
 
