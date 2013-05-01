@@ -8,7 +8,7 @@ This class works well with the [WordPress Custom Post Types class](https://githu
 
 ### Declaring New Taxonomies
 
-Include `taxonomies.php` in your `functions.php` file.
+Include `custom-taxonomies.php` in your `functions.php` file.
 
 Declare the various argument arrays to setup the new taxonomy as needed (`$name` is required):
 
