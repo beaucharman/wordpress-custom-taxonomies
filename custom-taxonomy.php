@@ -1,11 +1,11 @@
 <?php
 /**
- * Custom Taxonomies
+ * Custom Taxonomy
  * ------------------------------------------------------------------------
- * custom-taxonomies.php
+ * custom-taxonomy.php
  * @version 2.0 | April 1st 2013
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/wordpress-custom-taxonomies
+ * @link    https://github.com/beaucharman/wordpress-custom-taxonomy
  * @license MIT license
  *
  * Properties
@@ -20,14 +20,14 @@
  * LT3_Custom_Taxonomy class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-taxonomies
+ * https://github.com/beaucharman/wordpress-custom-taxonomy
  *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
 /* ------------------------------------------------------------------------
-   Custom taxonomy class
+   Custom Taxonomy class
    ------------------------------------------------------------------------ */
 class LT3_Custom_Taxonomy
 {
@@ -132,6 +132,7 @@ class LT3_Custom_Taxonomy
         'hide_empty' => false
       ), $user_args
     );
+
     if ( $single )
     {
       $items = get_terms( $this->name, $args );
