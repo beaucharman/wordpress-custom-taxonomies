@@ -5,7 +5,7 @@
  * custom-taxonomy.php
  * @version 2.0 | April 1st 2013
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/wordpress-custom-taxonomy
+ * @link    https://github.com/beaucharman/wordpress-custom-taxonomies
  * @license MIT license
  *
  * Properties
@@ -20,7 +20,7 @@
  * LT3_Custom_Taxonomy class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-taxonomy
+ * https://github.com/beaucharman/wordpress-custom-taxonomies
  *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
@@ -37,7 +37,16 @@ class LT3_Custom_Taxonomy
   public $options;
   public $help;
 
-  /* Class constructor */
+  /**
+   * Class constructor
+   *  ------------------------------------------------------------------------
+   * __construct()
+   * @param  $name      | string
+   * @param  $post_type | array || string
+   * @param  $labels    | array
+   * @param  $options   | array
+   * @param  $help      | array
+   *  ------------------------------------------------------------------------ */
   public function __construct( $name, $post_type = array(), $labels = array(), $options = array(), $help = null )
   {
     $this->name      = $this->uglify_words( $name );
