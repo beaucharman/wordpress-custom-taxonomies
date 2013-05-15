@@ -1,0 +1,15 @@
+node_modules
+.DS_Store
+.sass-cache
+*.bak
+*.png
+*.gif
+*.jpg
+Grunt-Project-Kickstarter.sublime-project
+Grunt-Project-Kickstarter.sublime-workspace
+application/development/**
+!application/development/.gitignore
+application/source/sass/**
+!application/source/sass/.gitignore
+application/deploy/**
+!application/deploy/.gitignore
