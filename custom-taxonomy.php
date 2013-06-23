@@ -44,7 +44,7 @@ class LT3_Custom_Taxonomy
 
   /**
    * Class Constructor
-   *  ========================================================================
+   * ========================================================================
    * __construct()
    * @param  {string}          $name
    * @param  {array || string} $post_type
@@ -52,15 +52,15 @@ class LT3_Custom_Taxonomy
    * @param  {array}           $options
    * @param  {string}          $help
    * @return {instance}        taxonomy
-   *  ======================================================================== */
+   * ======================================================================== */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
     /* Set class values */
-    $this->name      = $this->uglify_words($name);
+    $this->name = $this->uglify_words($name);
     $this->post_type = $post_type;
-    $this->labels    = $labels;
-    $this->options   = $options;
-    $this->help      = $help;
+    $this->labels = $labels;
+    $this->options = $options;
+    $this->help = $help;
 
     /* Create the labels */
     $this->labels['label_singular'] = (isset($this->labels['label_singular']))
@@ -75,8 +75,8 @@ class LT3_Custom_Taxonomy
       add_action('init', array(&$this, 'register_custom_taxonomy'), 0);
       if ($this->help)
       {
-        add_action('contextual_help'
-          , array(&$this, 'add_custom_contextual_help'), 10, 3);
+        add_action('contextual_help',
+          array(&$this, 'add_custom_contextual_help'), 10, 3);
       }
     }
   }
