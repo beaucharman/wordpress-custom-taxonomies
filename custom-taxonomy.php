@@ -108,7 +108,9 @@ class LT3_Custom_Taxonomy
       'new_item_name'     => __('New ' . $this->labels['label_singular']),
    );
 
-    /* Configure the options */
+    /**
+     * Configure the options
+     */
     $options = array_merge(
       array(
         'labels'            => $labels,
@@ -120,7 +122,9 @@ class LT3_Custom_Taxonomy
       $this->options
    );
 
-    /* Register the new taxonomy */
+    /**
+     * Register the new taxonomy
+     */
     register_taxonomy($this->name, $this->post_type, $options);
   }
 
