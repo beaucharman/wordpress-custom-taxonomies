@@ -3,10 +3,10 @@
  * Custom Taxonomy
  * ========================================================================
  * custom-taxonomy.php
- * @version 2.0 | April 1st 2013
- * @author  Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link    https://github.com/beaucharman/wordpress-custom-taxonomies
- * @license MIT license
+ * @version   2.0 | June 30th 2013
+ * @author    Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link      https://github.com/beaucharman/wordpress-custom-taxonomies
+ * @license   MIT license
  *
  * Properties
  *  $Taxonomy->name   {string}
@@ -55,14 +55,18 @@ class LT3_Custom_Taxonomy
    * ======================================================================== */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
-    /* Set class values */
+    /**
+     * Set class values
+     */
     $this->name = $this->uglify_words($name);
     $this->post_type = $post_type;
     $this->labels = $labels;
     $this->options = $options;
     $this->help = $help;
 
-    /* Create the labels */
+    /**
+     * Create the labels
+     */
     $this->labels['label_singular'] = (isset($this->labels['label_singular']))
       ? $this->labels['label_singular'] : $this->prettify_words($this->name);
     $this->labels['label_plural'] = (isset($this->labels['label_plural']))
@@ -70,7 +74,7 @@ class LT3_Custom_Taxonomy
     $this->labels['menu_label'] = (isset($this->labels['menu_label']))
       ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
-    if (!taxonomy_exists($this->name))
+    if (! taxonomy_exists($this->name))
     {
       add_action('init', array(&$this, 'register_custom_taxonomy'), 0);
       if ($this->help)
