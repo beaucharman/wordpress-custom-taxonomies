@@ -118,7 +118,7 @@ class LT3_Custom_Taxonomy
         'query_var'         => $this->name,
         'rewrite'           => true,
         'show_admin_column' => true
-     ),
+      ),
       $this->options
    );
 
