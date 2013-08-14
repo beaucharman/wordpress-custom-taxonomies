@@ -65,15 +65,29 @@ class LT3_Custom_Taxonomy
     $this->help = $help;
 
     /**
-     * Create the labels
+     * Create the labels where needed
      */
-    $this->labels['label_singular'] = (isset($this->labels['label_singular']))
-      ? $this->labels['label_singular'] : $this->prettify_words($this->name);
-    $this->labels['label_plural'] = (isset($this->labels['label_plural']))
-      ? $this->labels['label_plural'] : $this->plurify_words($this->labels['label_singular']);
-    $this->labels['menu_label'] = (isset($this->labels['menu_label']))
-      ? $this->labels['menu_label'] : $this->labels['label_plural'];
+    /* Taxonomy singluar label */
+    if (! isset($this->labels['label_singular']))
+    {
+      $this->labels['label_singular'] = $this->prettify_words($this->name);
+    }
 
+    /* Taxonomy plural label */
+    if (! isset($this->labels['label_plural']))
+    {
+      $this->labels['label_plural'] = $this->plurify_words($this->labels['label_singular']);
+    }
+
+    /* Taxonomy menu label */
+    if (! isset($this->labels['menu_label']))
+    {
+      $this->labels['menu_label'] = $this->labels['label_plural'];
+    }
+
+    /**
+     * If the taxonomy doesn't already exist, create it!
+     */
     if (! taxonomy_exists($this->name))
     {
       add_action('init', array(&$this, 'register_custom_taxonomy'), 0);
@@ -94,6 +108,9 @@ class LT3_Custom_Taxonomy
    * ======================================================================== */
   public function register_custom_taxonomy()
   {
+    /**
+     * Set up the taxonomy labels
+     */
     $labels = array(
       'name'              => __($this->labels['label_plural'], $this->labels['label_plural'] . ' general name'),
       'singular_name'     => __($this->labels['label_singular'], $this->labels['label_singular'] . ' singular name'),
@@ -109,14 +126,13 @@ class LT3_Custom_Taxonomy
    );
 
     /**
-     * Configure the options
+     * Configure the taxonomy options
      */
     $options = array_merge(
       array(
-        'labels'            => $labels,
         'hierarchical'      => true,
-        'query_var'         => $this->name,
-        'rewrite'           => true,
+        'labels'            => $labels,
+        'rewrite'           => array('slug' => $this->get_slug()),
         'show_admin_column' => true
       ),
       $this->options
@@ -157,8 +173,8 @@ class LT3_Custom_Taxonomy
         'orderby'    => 'name',
         'order'      => 'ASC',
         'hide_empty' => false
-     ), $user_args
-   );
+      ), $user_args
+    );
 
     if ($single)
     {
@@ -169,14 +185,34 @@ class LT3_Custom_Taxonomy
   }
 
   /**
-   * Archive Link
+   * Archive URI
    * ========================================================================
-   * archive_link()
+   * archive_uri()
+   * @param  none
    * @return {string}
    * ======================================================================== */
-  public function archive_link()
+  public function archive_uri($path = '')
   {
-    return home_url('/' . $this->name);
+    return home_url('/' . $this->get_slug() . '/' . $path);
+  }
+
+  /**
+   * Get Slug
+   * ========================================================================
+   * get_slug()
+   * @param  $name {string}
+   * @return string
+   * ======================================================================== */
+  public function get_slug($name = null)
+  {
+    if (! $name)
+    {
+      $name = $this->name;
+    }
+
+    return strtolower(
+      str_replace(' ', '-', str_replace('_', '-', $name))
+    );
   }
 
   /**
@@ -229,9 +265,6 @@ class LT3_Custom_Taxonomy
     {
       return $words . 'es';
     }
-    else
-    {
-      return $words . 's';
-    }
+    return $words . 's';
   }
 }
