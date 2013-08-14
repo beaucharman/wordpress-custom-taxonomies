@@ -65,9 +65,9 @@ An array of the singular, plural and menu lables.
 
 #### Methods
 
-**`$Taxonomy->archive_link()`**
+**`$Taxonomy->archive_uri()`**
 
-Gets the absolute permalink to the taxonomies's archive page.
+Gets the URI to the taxonomies's archive page.
 
 **`$Taxonomy->get()`**
 

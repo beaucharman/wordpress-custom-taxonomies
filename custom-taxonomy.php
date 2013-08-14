@@ -14,7 +14,7 @@
  *
  * Methods
  *  $Taxonomy->get()
- *  $Taxonomy->archive_link()
+ *  $Taxonomy->archive_uri()
  *
  * To declare a custom taxonomy, simply create a new instance of the
  * LT3_Custom_Taxonomy class.
