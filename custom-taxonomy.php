@@ -52,7 +52,7 @@ class LT3_Custom_Taxonomy
    * @param  {array}           $options
    * @param  {string}          $help
    * @return {instance}        taxonomy
-   * ======================================================================== */
+   */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
     /**
@@ -105,7 +105,7 @@ class LT3_Custom_Taxonomy
    * register_custom_taxonomy()
    * @param  {null}
    * @return {object} | taxonomy
-   * ======================================================================== */
+   */
   public function register_custom_taxonomy()
   {
     /**
@@ -148,7 +148,7 @@ class LT3_Custom_Taxonomy
    * Add Custom Contextual Help
    * ========================================================================
    * add_custom_contextual_help()
-   * ======================================================================== */
+   */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
     $context = 'edit-' . $this->name;
@@ -165,7 +165,7 @@ class LT3_Custom_Taxonomy
    * get()
    * @param  {array}  $user_args
    * @return {object} | term data
-   * ======================================================================== */
+   */
   public function get($user_args = array(), $single = false)
   {
     $args = array_merge(
@@ -190,7 +190,7 @@ class LT3_Custom_Taxonomy
    * archive_uri()
    * @param  none
    * @return {string}
-   * ======================================================================== */
+   */
   public function archive_uri($path = '')
   {
     return home_url('/' . $this->get_slug() . '/' . $path);
@@ -202,7 +202,7 @@ class LT3_Custom_Taxonomy
    * get_slug()
    * @param  $name {string}
    * @return string
-   * ======================================================================== */
+   */
   public function get_slug($name = null)
   {
     if (! $name)
@@ -224,7 +224,7 @@ class LT3_Custom_Taxonomy
    *
    * Creates a pretty version of a string, like
    * a pug version of a dog.
-   * ======================================================================== */
+   */
   public function prettify_words($words)
   {
     return ucwords(str_replace('_', ' ', $words));
@@ -238,7 +238,7 @@ class LT3_Custom_Taxonomy
    * @return {string}
    *
    * creates a url firendly version of the given string.
-   * ======================================================================== */
+   */
   public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));
@@ -254,7 +254,7 @@ class LT3_Custom_Taxonomy
    * Plurifies most common words. Not currently working
    * proper nouns, or more complex words, for example
    * knife -> knives, leaf -> leaves.
-   * ======================================================================== */
+   */
   public function plurify_words($words)
   {
     if (strToLower(substr($words, -1)) == 'y')
