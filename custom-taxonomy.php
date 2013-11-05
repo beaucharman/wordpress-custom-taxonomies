@@ -53,36 +53,58 @@ class LT3_Custom_Taxonomy
    * @param  {string}          $help
    * @return {instance}        taxonomy
    */
-  public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
+  public function __construct($args, $post_type = null)
   {
     /**
      * Set class values
      */
-    $this->name = $this->uglify_words($name);
-    $this->post_type = $post_type;
-    $this->labels = $labels;
-    $this->options = $options;
-    $this->help = $help;
+    if (! is_array($args))
+    {
+      $name = $args;
+      $args = array();
+    }
+    else
+    {
+      $name = $args['name'];
+      $post_type = $args['post_type'];
+    }
+
+    $args = array_merge(
+      array(
+        'name'    => $this->uglify_words($name),
+        'post_type' => $post_type,
+        'labels'  => array(),
+        'options' => array(),
+        'help'    => null
+      ),
+      $args
+    );
+
+    $this->name = $args['name'];
+    $this->post_type = $args['post_type'];
+    $this->labels = $args['labels'];
+    $this->options = $args['options'];
+    $this->help = $args['help'];
 
     /**
      * Create the labels where needed
      */
     /* Taxonomy singluar label */
-    if (! isset($this->labels['label_singular']))
+    if (! isset($this->labels['singular']))
     {
-      $this->labels['label_singular'] = $this->prettify_words($this->name);
+      $this->labels['singular'] = $this->prettify_words($this->name);
     }
 
     /* Taxonomy plural label */
-    if (! isset($this->labels['label_plural']))
+    if (! isset($this->labels['plural']))
     {
-      $this->labels['label_plural'] = $this->plurify_words($this->labels['label_singular']);
+      $this->labels['plural'] = $this->plurify_words($this->labels['singular']);
     }
 
     /* Taxonomy menu label */
-    if (! isset($this->labels['menu_label']))
+    if (! isset($this->labels['menu']))
     {
-      $this->labels['menu_label'] = $this->labels['label_plural'];
+      $this->labels['menu'] = $this->labels['plural'];
     }
 
     /**
@@ -112,17 +134,17 @@ class LT3_Custom_Taxonomy
      * Set up the taxonomy labels
      */
     $labels = array(
-      'name'              => __($this->labels['label_plural'], $this->labels['label_plural'] . ' general name'),
-      'singular_name'     => __($this->labels['label_singular'], $this->labels['label_singular'] . ' singular name'),
-      'menu_name'         => __($this->labels['menu_label']),
-      'search_items'      => __('Search ' . $this->labels['label_plural']),
-      'all_items'         => __('All ' . $this->labels['label_plural']),
-      'parent_item'       => __('Parent ' . $this->labels['label_singular']),
-      'parent_item_colon' => __('Parent '. $this->labels['label_singular'] . ':'),
-      'edit_item'         => __('Edit ' . $this->labels['label_singular']),
-      'update_item'       => __('Update ' . $this->labels['label_singular']),
-      'add_new_item'      => __('Add New ' . $this->labels['label_singular']),
-      'new_item_name'     => __('New ' . $this->labels['label_singular']),
+      'name'              => __($this->labels['plural'], $this->labels['plural'] . ' general name'),
+      'singular_name'     => __($this->labels['singular'], $this->labels['singular'] . ' singular name'),
+      'menu_name'         => __($this->labels['menu']),
+      'search_items'      => __('Search ' . $this->labels['plural']),
+      'all_items'         => __('All ' . $this->labels['plural']),
+      'parent_item'       => __('Parent ' . $this->labels['singular']),
+      'parent_item_colon' => __('Parent '. $this->labels['singular'] . ':'),
+      'edit_item'         => __('Edit ' . $this->labels['singular']),
+      'update_item'       => __('Update ' . $this->labels['singular']),
+      'add_new_item'      => __('Add New ' . $this->labels['singular']),
+      'new_item_name'     => __('New ' . $this->labels['singular']),
    );
 
     /**
@@ -176,24 +198,13 @@ class LT3_Custom_Taxonomy
       ), $user_args
     );
 
+    $items = get_terms($this->name, $args);
+
     if ($single)
     {
-      $items = get_terms($this->name, $args);
       return $items[0];
     }
-    return get_terms($this->name, $args);
-  }
-
-  /**
-   * Archive URI
-   * ========================================================================
-   * archive_uri()
-   * @param  none
-   * @return {string}
-   */
-  public function archive_uri($path = '')
-  {
-    return home_url('/' . $this->get_slug() . '/' . $path);
+    return $items;
   }
 
   /**
@@ -210,9 +221,7 @@ class LT3_Custom_Taxonomy
       $name = $this->name;
     }
 
-    return strtolower(
-      str_replace(' ', '-', str_replace('_', '-', $name))
-    );
+    return strtolower(str_replace(' ', '-', str_replace('_', '-', $name)));
   }
 
   /**
