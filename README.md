@@ -10,24 +10,24 @@ This class works well with the [WordPress Custom Post Type class](https://github
 
 Include `custom-taxonomy.php` in your `functions.php` file.
 
-Declare the various argument arrays to setup the new taxonomy as needed (`$name` is required):
+Declare the various argument arrays to setup the new taxonomy as needed (`name` and `post_type` are required):
 
 ```php
 // required
-$name = '';
+$args['name'] = '';
 
 // The post type/s that the taxonomy is connected to.
 // String or array
-$post_type = '';
+$args['post_type'] = '';
 
 // optional
-$labels = array(
+$args['labels'] = array(
   'label_singular'        => '',
   'label_plural'          => '',
   'menu_label'            => ''
  );
 
-$options = array(
+ $args['options'] = array(
   'public'                => true,
   'show_ui'               => true,
   'show_in_nav_menus'     => true,
@@ -40,13 +40,19 @@ $options = array(
   'sort'                  => null
  );
 
-$help = '';
+$args['help'] = '';
 ```
 
-Then create a variable (for future reference, but is not required) from an instance of the LT3_Custom_Taxonomy class:
+Then create a variable (for future reference, but is not required) from an instance of the Bamboo_Custom_Taxonomy class:
 
 ```php
-$Taxonomy = new LT3_Custom_Taxonomy( $name, $post_type, $labels, $options, $help );
+$Taxonomy = new Bamboo_Custom_Taxonomy($args);
+```
+
+You can even quick declare a Taxonomy by just passing the name and associated post type two strings. So for a Taxonomy of of *genre* for the post type *movie*, just pass:
+
+```PHP
+$Genre = new Bamboo_Custom_Taxonomy('genre', 'movie');
 ```
 
 ### Usage
@@ -64,10 +70,6 @@ The taxonomy slug.
 An array of the singular, plural and menu lables.
 
 #### Methods
-
-**`$Taxonomy->archive_uri()`**
-
-Gets the URI to the taxonomies's archive page.
 
 **`$Taxonomy->get()`**
 

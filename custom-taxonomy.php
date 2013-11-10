@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Taxonomy
+ * Bamboo - Custom Taxonomy
  * ========================================================================
  * custom-taxonomy.php
  * @version   2.0 | June 30th 2013
@@ -14,10 +14,9 @@
  *
  * Methods
  *  $Taxonomy->get()
- *  $Taxonomy->archive_uri()
  *
  * To declare a custom taxonomy, simply create a new instance of the
- * LT3_Custom_Taxonomy class.
+ * Bamboo_Custom_Taxonomy class.
  *
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-taxonomies
@@ -34,7 +33,7 @@
 /* ========================================================================
    Custom Taxonomy class
    ======================================================================== */
-class LT3_Custom_Taxonomy
+class Bamboo_Custom_Taxonomy
 {
   public $name;
   public $post_type;
