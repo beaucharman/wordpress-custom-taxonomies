@@ -1,6 +1,6 @@
 <?php
 /**
- * Bamboo - Custom Taxonomy
+ * Bamboo - WordPress Custom Taxonomy
  * ========================================================================
  * custom-taxonomy.php
  * @version   2.0 | June 30th 2013
@@ -30,27 +30,28 @@
  * init function with an action hook.
  */
 
+
 /* ========================================================================
    Custom Taxonomy class
    ======================================================================== */
+
+
 class Bamboo_Custom_Taxonomy
 {
+
   public $name;
   public $post_type;
   public $labels;
   public $options;
   public $help;
 
+
   /**
-   * Class Constructor
+   * Constructor
    * ========================================================================
-   * __construct()
-   * @param  {string}          $name
-   * @param  {array || string} $post_type
-   * @param  {string}          $labels
-   * @param  {array}           $options
-   * @param  {string}          $help
-   * @return {instance}        taxonomy
+   * @param  {array}    $args
+   * @param  {string}   $post_type
+   * @return {instance} taxonomy
    */
   public function __construct($args, $post_type = null)
   {
@@ -88,6 +89,7 @@ class Bamboo_Custom_Taxonomy
     /**
      * Create the labels where needed
      */
+
     /* Taxonomy singluar label */
     if (! isset($this->labels['singular']))
     {
@@ -120,12 +122,12 @@ class Bamboo_Custom_Taxonomy
     }
   }
 
+
   /**
    * Register Custom Taxonomy
    * ========================================================================
-   * register_custom_taxonomy()
    * @param  {null}
-   * @return {object} | taxonomy
+   * @return {object} taxonomy
    */
   public function register_custom_taxonomy()
   {
@@ -165,27 +167,33 @@ class Bamboo_Custom_Taxonomy
     register_taxonomy($this->name, $this->post_type, $options);
   }
 
+
   /**
    * Add Custom Contextual Help
    * ========================================================================
-   * add_custom_contextual_help()
+   * @param $contextual_help
+   * @param $screen_id
+   * @param $screen
    */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
     $context = 'edit-' . $this->name;
+
     if ($context == $screen->id)
     {
       $contextual_help = $this->help;
     }
+
     return $contextual_help;
   }
+
 
   /**
    * Get
    * ========================================================================
-   * get()
-   * @param  {array}  $user_args
-   * @return {object} | term data
+   * @param  {array}   $user_args
+   * @param  {boolean} $single
+   * @return {object}  term data
    */
   public function get($user_args = array(), $single = false)
   {
@@ -203,15 +211,16 @@ class Bamboo_Custom_Taxonomy
     {
       return $items[0];
     }
+
     return $items;
   }
+
 
   /**
    * Get Slug
    * ========================================================================
-   * get_slug()
-   * @param  $name {string}
-   * @return string
+   * @param  {string} $name
+   * @return {string}
    */
   public function get_slug($name = null)
   {
@@ -223,10 +232,10 @@ class Bamboo_Custom_Taxonomy
     return strtolower(str_replace(' ', '-', str_replace('_', '-', $name)));
   }
 
+
   /**
    * Prettify Words
    * ========================================================================
-   * prettify_words()
    * @param  {string} $words
    * @return {string}
    *
@@ -238,10 +247,10 @@ class Bamboo_Custom_Taxonomy
     return ucwords(str_replace('_', ' ', $words));
   }
 
+
   /**
    * Uglify Words
    * ========================================================================
-   * uglify_words()
    * @param  {string} $word
    * @return {string}
    *
@@ -252,10 +261,10 @@ class Bamboo_Custom_Taxonomy
     return strToLower(str_replace(' ', '_', $words));
   }
 
+
   /**
    * Plurify Words
    * ========================================================================
-   * plurify_words()
    * @param  {string} $words
    * @return {string}
    *
